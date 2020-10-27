@@ -9,10 +9,7 @@ app.use(express.static('js'));
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/main.html')
-})
-
+require("./routers/viewRoutes")(app);
 app.post('/quotes', (req, res) => {
     console.log(req.body)
 })
