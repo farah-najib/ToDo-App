@@ -8,8 +8,10 @@ app.use(express.static('css'));
 app.use(express.static('js'));
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 require("./routers/viewRoutes")(app);
+require("./routers/taskrouter")(app);
 app.post('/quotes', (req, res) => {
     console.log(req.body)
 })

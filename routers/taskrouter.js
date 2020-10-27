@@ -1,8 +1,9 @@
 const Tasks = require("./../models").tasks;
 module.exports = function(router) {
     router.post("/task", (req, res) => {
+      console.log(req.body)
         Tasks.create({
-          name: req.body.name,
+          taskname: req.body.taskname
         })
           .then(data  => {
             res.json({
