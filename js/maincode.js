@@ -2,6 +2,8 @@ var taskInput=document.getElementById("new-task");
 var addButton=document.getElementById("additem");
 var TaskHolder=document.getElementById("listtasks");
 
+
+//function to create to make todo list dom 
 var createNewTaskElement=function(taskString){
 
 	var listItem=document.createElement("li");
@@ -29,6 +31,21 @@ var addTask=function(){
 	var listItem=createNewTaskElement(taskInput.value);
 	TaskHolder.appendChild(listItem);
 	bindTaskEvents(listItem);
+	$.ajax({
+		url: 'task',
+		type: 'POST',
+		contentType: 'application/json',
+		dataType: 'json',
+		data: JSON.stringify({
+			taskname: taskInput.value
+			
+		}),
+		success: (data) => {
+
+			console.log(data);
+		}
+	});
+
 	taskInput.value="";
 
 }
